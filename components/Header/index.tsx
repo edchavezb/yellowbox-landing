@@ -5,6 +5,25 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import localFont from 'next/font/local'
+
+const cocoGothic = localFont({
+  src: [
+    {
+      path: '../../public/fonts/CocoGothic-Bold.ttf',
+      weight: '600'
+    },
+    {
+      path: '../../public/fonts/CocoGothic-Bold.woff',
+      weight: '600'
+    },
+    {
+      path: '../../public/fonts/CocoGothic-Bold.woff2',
+      weight: '600'
+    },
+  ],
+  variable: '--font-cocogothic'
+})
 
 const Header = () => {
   // Navbar toggle
@@ -49,27 +68,23 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
+            <div className="w-60 max-w-60 px-4 xl:mr-12">
               <Link
                 href="/"
-                className={`header-logo block w-full ${
+                className={`header-logo flex items-center gap-[10px] w-full ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
                 <Image
-                  src="/images/logo/logo-2.svg"
+                  src="/images/logo/ideogram.png"
                   alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full dark:hidden"
+                  width={160}
+                  height={160}
+                  className="w-[40px] h-[40px] rounded-md"
                 />
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
-                />
+                <div className={`${cocoGothic.variable} font-cocogothic text-[30px]`}>
+                  yellowbox
+                </div>
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
